@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AdmiProPOA"
+    }
+  },
+  "defaultProject": "AdmiProPOA",
+  "cli": {
+    "analytics": "cfb78d6e-cf3a-42d5-8225-eff5541a5fbd"
+  }
 }
