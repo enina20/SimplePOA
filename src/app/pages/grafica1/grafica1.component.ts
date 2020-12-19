@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientsService } from 'src/app/services/clients.service';
 
 @Component({
   selector: 'app-grafica1',
@@ -8,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Grafica1Component implements OnInit {
 
-  constructor() { }
+  clientes:any[]=[];
+
+
+  constructor(private clienteService: ClientsService) { }
 
   ngOnInit(): void {
+    this.clientes = this.clienteService.clients;
+  }
+
+  delete(){
+
   }
 
 }
