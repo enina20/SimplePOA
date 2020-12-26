@@ -1,0 +1,130 @@
+
+<div class="modal-info animated fadeIn fast"
+[class.close-modal]="modalInfoService.ocutarModal2">
+
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title" id="myLargeModalLabel">Nombre del proyecto</h4>
+          <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+
+<div class="card-body">
+  <form autocomplete="off"
+    class="form-horizontal" #forma="ngForm"
+        (ngSubmit)="crearnuevoAccion( forma )">
+      <div class="form-body">
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group row">
+                      <label class="control-label text-right col-md-3">Responsable</label>
+                      <div class="col-md-9">
+                          <input type="text"
+                            class="form-control"
+                            placeholder="Ejem. Jose Luis Perales"
+                            [class.is-invalid]="responsable.invalid && responsable.touched"
+                            [(ngModel)]="nuevoAccion.responsable"
+                            name="responsable"
+                            required
+                            #responsable="ngModel">
+                          <small *ngIf="responsable.invalid && responsable.touched"
+                            class="form-text text-danger"> El responsable de la accion es requerido</small>
+
+                      </div>
+                  </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                  <div class="form-group row">
+                      <label class="control-label text-right col-md-3">Detalle</label>
+                      <div class="col-md-9">
+                        <input type="text"
+                          class="form-control"
+                          placeholder="Gobierno electronico"
+                          [class.is-invalid]="detalle.invalid && detalle.touched"
+                          [(ngModel)]="nuevoAccion.detalle"
+                          name="detalle"
+                          required
+                          #detalle="ngModel">
+                          <small *ngIf="detalle.invalid && detalle.touched"
+                            class="form-text text-danger"> El detalle es requerido</small>
+                        <small class="form-control-feedback">Escriba el titulo del proyecto</small> </div>
+                  </div>
+              </div>
+              <!--/span-->
+          </div>
+          <!--/row-->
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group row">
+                      <label class="control-label text-right col-md-3">Estado</label>
+                      <div class="col-md-9">
+                          <select class="form-control custom-select"
+                              [(ngModel)]="nuevoAccion.estado"
+                              name="estado"
+                              required
+                              [class.is-invalid]="estado.invalid && estado.touched"
+                              #estado="ngModel"
+                              >
+
+                              <option value="No concluidas">No concluidas</option>
+                              <option value="En proceso">En proceso</option>
+                              <option value="Completadas">Completadas</option>
+                          </select>
+                          <small *ngIf="estado.invalid && estado.touched"
+                            class="form-text text-danger"> El estado es requerido</small>
+                          <small class="form-control-feedback"> Selecciona el estado de la accion </small> </div>
+                  </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="control-label text-right col-md-3">Fecha inicio</label>
+                    <div class="col-md-9">
+                      <input type="date"
+                             class="form-control"
+                             [class.is-invalid]="fecha.invalid && fecha.touched"
+                            [(ngModel)]="nuevoAccion.fecha"
+                            required
+                            #fecha="ngModel"
+                            name="fecha">
+                            <small *ngIf="fecha.invalid && fecha.touched"
+                            class="form-text text-danger"> La fecha es requerida</small>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <hr>
+      <div class="form-actions">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="row">
+                      <div class="col-md-offset-3 col-md-9">
+                          <button type="submit"
+                                  class="btn btn-info mr-3">Crear</button>
+                          <button
+                          type="submit" class="btn btn-danger mr-3">Cancelar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

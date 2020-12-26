@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-progress',
-  templateUrl: './progress.component.html',
+  selector: 'app-calendario',
+  templateUrl: './calendario.component.html',
   styles: [
   ]
 })
-export class ProgressComponent implements OnInit {
+export class CalendarioComponent implements OnInit {
 
   constructor() { }
 

@@ -8,6 +8,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     PagesModule,
     SharedModule,
-    AuthModule
+    AuthModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

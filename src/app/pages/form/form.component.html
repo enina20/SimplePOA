@@ -1,0 +1,397 @@
+<!-- Row -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header bg-warning">
+        <h4 class="m-b-0 text-white">Registro de Usuario</h4>
+      </div>
+      <div class="card-body">
+        <form
+          autocomplete="off"
+          (ngSubmit)="crearUsuario(usuarioForm)"
+          class="form-horizontal"
+          #usuarioForm="ngForm"
+        >
+          <div class="form-body">
+            <h3 class="box-title">Información Personal</h3>
+            <hr class="m-t-0 m-b-40" />
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3">
+                    Nombre completo
+                  </label>
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Ingrese su nombre completo"
+                      [class.is-invalid]="nombre.invalid && nombre.touched"
+                      [(ngModel)]="usuario.name"
+                      name="nombre"
+                      required
+                      #nombre="ngModel"
+                    />
+                    <small
+                      *ngIf="nombre.invalid && nombre.touched"
+                      class="form-text text-danger"
+                    >
+                      El nombre es requerida</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Correo electronico</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Ingrese un correo valido"
+                      [class.is-invalid]="email.invalid && email.touched"
+                      required
+                      email
+                      #email="ngModel"
+                      [(ngModel)]="usuario.email"
+                      name="email"
+                    />
+                    <small
+                      *ngIf="email.invalid && email.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Cedula de identidad</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="usuario.cedula"
+                      [class.is-invalid]="cedula.invalid && cedula.touched"
+                      required
+                      #cedula="ngModel"
+                      name="cedula"
+                    />
+                    <small
+                      *ngIf="cedula.invalid && cedula.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Celular</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="usuario.celular"
+                      [class.is-invalid]="celular.invalid && celular.touched"
+                      required
+                      #celular="ngModel"
+                      name="celular"
+                    />
+                    <small
+                      *ngIf="celular.invalid && celular.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/row-->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Género</label
+                  >
+                  <div class="col-md-9">
+                    <select
+                      class="form-control custom-select"
+                      [(ngModel)]="usuario.genero"
+                      [class.is-invalid]="genero.invalid && genero.touched"
+                      required
+                      #genero="ngModel"
+                      name="genero"
+                    >
+                      <option value="Masculino">Masculino</option>
+                      <option value="Femenino">Femenino</option>
+                    </select>
+                    <small
+                      *ngIf="genero.invalid && genero.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                    <small class="form-control-feedback">
+                      Seleccione su género
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Fecha de Nacimiento</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="date"
+                      class="form-control"
+                      [class.is-invalid]="fecha.invalid && fecha.touched"
+                      required
+                      #fecha="ngModel"
+                      [(ngModel)]="usuario.fecha"
+                      name="fecha"
+                    />
+                    <small
+                      *ngIf="fecha.invalid && fecha.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div>
+
+            <!--/row-->
+            <h3 class="box-title">Información Laboral</h3>
+            <hr class="m-t-0 m-b-40" />
+            <!--/row-->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Unidad ejecutora</label
+                  >
+                  <div class="col-md-9">
+                    <select
+                      class="form-control custom-select"
+                      [(ngModel)]="usuario.unidad"
+                      name="unidad"
+                      [class.is-invalid]="unidad.invalid && unidad.touched"
+                      required
+                      #unidad="ngModel"
+                    >
+                      <option value="1">Adminstrativos centrales</option>
+                      <option value="2">Adminstrativos centrales</option>
+                      <option value="3">Adminstrativos centrales</option>
+                    </select>
+                    <small class="form-control-feedback">
+                      Seleccione la unidad ejecutora</small
+                    >
+                    <small
+                      *ngIf="unidad.invalid && unidad.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Puesto
+                  </label>
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="usuario.puesto"
+                      [class.is-invalid]="puesto.invalid && puesto.touched"
+                      required
+                      #puesto="ngModel"
+                      name="puesto"
+                    />
+                    <small
+                      *ngIf="puesto.invalid && puesto.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Programa</label
+                  >
+                  <div class="col-md-9">
+                    <select
+                      class="form-control custom-select"
+                      [(ngModel)]="usuario.programa"
+                      [class.is-invalid]="programa.invalid && programa.touched"
+                      required
+                      #programa="ngModel"
+                      name="programa"
+                    >
+                      <option value="Adminstrativos centrales">
+                        Adminstrativos centrales
+                      </option>
+                      <option value="Adminstrativos centrales">
+                        Adminstrativos centrales
+                      </option>
+                      <option value="Adminstrativos centrales">
+                        Adminstrativos centrales
+                      </option>
+                    </select>
+                    <small class="form-control-feedback">
+                      Seleccione la unidad ejecutora</small
+                    >
+                    <small
+                      *ngIf="programa.invalid && programa.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Proyecto</label
+                  >
+                  <div class="col-md-9">
+                    <select
+                      class="form-control custom-select"
+                      [(ngModel)]="usuario.proyecto"
+                      [class.is-invalid]="proyecto.invalid && proyecto.touched"
+                      required
+                      #proyecto="ngModel"
+                      name="proyecto"
+                    >
+                      <option value="Adminstrativos centrales">
+                        Adminstrativos centrales
+                      </option>
+                      <option value="Adminstrativos centrales">
+                        Adminstrativos centrales
+                      </option>
+                      <option value="Adminstrativos centrales">
+                        Adminstrativos centrales
+                      </option>
+                    </select>
+                    <small class="form-control-feedback">
+                      Seleccione la unidad ejecutora</small
+                    >
+                    <small
+                      *ngIf="proyecto.invalid && proyecto.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Dirección</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="usuario.direccion"
+                      [class.is-invalid]="
+                        direccion.invalid && direccion.touched
+                      "
+                      required
+                      #direccion="ngModel"
+                      name="direccion"
+                    />
+                    <small
+                      *ngIf="direccion.invalid && direccion.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Rol del usuario</label
+                  >
+                  <div class="col-md-9">
+                    <select
+                      class="form-control custom-select"
+                      [(ngModel)]="usuario.role"
+                      [class.is-invalid]="role.invalid && role.touched"
+                      required
+                      #role="ngModel"
+                      name="role"
+                    >
+                      <option value="Usuario">Usuario</option>
+                      <option value="Administrador">Administrador</option>
+                      <option value="Jefe de unidad">Jefe de unidad</option>
+                    </select>
+                    <small
+                      *ngIf="role.invalid && role.touched"
+                      class="form-text text-danger"
+                      >El correo es requerido</small
+                    >
+                    <small class="form-control-feedback">
+                      Seleccione el rol del usuario
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div>
+          </div>
+          <hr />
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <button
+                class="btn btn-info mr-5"
+                type="submit"
+                *ngIf="!usuario.uid; else elseblock"
+              >
+                Crear Usuario
+              </button>
+
+              <ng-template #elseblock>
+                <button
+                  class="btn btn-primary mr-5"
+                  role="button"
+                  (click)="actualizarUsuario()"
+                  [disabled]="!usuarioForm.form.valid"
+                >
+                  Actualizar Usuario
+                </button>
+              </ng-template>
+              <button routerLink="/dashboard/listado" class="btn btn-danger">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Row -->

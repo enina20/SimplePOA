@@ -13,16 +13,16 @@ export class SettingsService {
     this.linkTheme.setAttribute('href', url);
   }
 
-  changeTheme(theme:string){
+  changeTheme(theme: string) {
 
-    const url = `./assets/css/colors/${ theme }.css`;
+    const url = `./assets/css/colors/${theme}.css`;
     this.linkTheme.setAttribute('href', url);
     localStorage.setItem('theme', url);
     this.checkCurrentTheme();
 
   }
 
-  checkCurrentTheme(){
+  checkCurrentTheme() {
     const linksThemeSelector = document.querySelectorAll('.selector');
 
     linksThemeSelector.forEach(element => {
@@ -30,10 +30,10 @@ export class SettingsService {
       element.classList.remove('working');
 
       const btnTheme = element.getAttribute('data-theme');
-      const btnThemeUrl = `./assets/css/colors/${ btnTheme }.css`;
+      const btnThemeUrl = `./assets/css/colors/${btnTheme}.css`;
       const currentTheme = this.linkTheme.getAttribute('href');
 
-      if( btnThemeUrl === currentTheme ){
+      if (btnThemeUrl === currentTheme) {
         element.classList.add('working');
       }
     });
