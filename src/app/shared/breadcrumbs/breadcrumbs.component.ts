@@ -18,7 +18,7 @@ export class BreadcrumbsComponent implements OnDestroy{
     this.titleSub$ = this.loadPathArguments()
       .subscribe( ({title}) => {
       this.title = title;
-      document.title = `AdmiPro - ${title}`;
+      document.title = `SimplePOA - ${title}`;
      });
   }
   ngOnDestroy(): void {
