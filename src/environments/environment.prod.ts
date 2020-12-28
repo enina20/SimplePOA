@@ -3,5 +3,5 @@
 
 export const environment = {
   production: true,
-  base_url: 'https://facil-poa.herokuapp.com/api'
+  base_url: 'https://simple-poa.herokuapp.com/api'
 };
