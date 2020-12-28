@@ -16,6 +16,7 @@ import { PoaGeneralComponent } from './poa-general/poa-general.component';
 
 
 import { AdmiGuard } from '../guards/admi.guard';
+import { FormUnidadComponent } from './form-unidad/form-unidad.component';
 
 const childRoutes: Routes = [
   { path: '', component: DashboardComponent, data: { title: 'Principal' } },
@@ -31,6 +32,8 @@ const childRoutes: Routes = [
   { path: 'buscar/:termino', component: BusquedaComponent, data: { title: 'Busqueda en la aplicacion' } },
   { path: 'listado', component: Grafica1Component, data: { title: 'Listado de usuarios' } },
   { path: 'listado/form', canActivate: [AdmiGuard], component: FormComponent, data: { title: 'Crear Usuario' } },
+  { path: 'listado/form/:id', canActivate: [AdmiGuard], component: FormComponent, data: { title: 'Editar Usuario' } },
+  { path: 'unidad-ejecutora/formulario', canActivate: [AdmiGuard], component: FormUnidadComponent, data: { title: 'Crear Unidad Ejecutora' } },
   { path: 'listado/form/:id', canActivate: [AdmiGuard], component: FormComponent, data: { title: 'Editar Usuario' } },
   { path: 'listado/detalle/:id', component: DetalleUsuarioComponent, data: { title: 'Editar Usuario' } },
   { path: 'perfil', component: DetalleUsuarioComponent, data: { title: 'Mi perfil' } },

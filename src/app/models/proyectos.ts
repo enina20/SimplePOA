@@ -13,6 +13,7 @@ export class Proyecto {
   public encargado: string;
   public name: string;
   public resumen: string;
+  public proyId?: string;
 
 constructor(){}
 }

@@ -11,6 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 export class BusquedaComponent implements OnInit {
 
   public resultados: any[] = [];
+  cargando: boolean;
+
 
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UserService) { }
@@ -23,11 +25,11 @@ export class BusquedaComponent implements OnInit {
   }
 
   busqueda(termino: string) {
+    this.cargando = true;
     this.userService.busquedaGlobal(termino).subscribe(
       data => {
         this.resultados = data.clients
-
-        console.log(this.resultados);
+        this.cargando = false;
       }
     )
   }

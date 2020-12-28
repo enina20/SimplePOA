@@ -14,9 +14,25 @@ const base_url = environment.base_url;
 
 export class SidebarService {
 
-  public programas:any[]=[];
+  public programas:Unida[]=[
+    { name: 'Administrativos Centrales',
+      icono: "https://img.icons8.com/color/48/000000/meeting-room.png", },
+    { name: "Direcciones",
+      icono: "https://img.icons8.com/color/48/000000/sales-channels.png", },
+    { name: "Secretarias",
+      icono: "https://img.icons8.com/color/48/000000/teamwork--v2.png", },
+    { name: "POA General",
+      icono: "https://img.icons8.com/color/48/000000/rules.png", },
+    { name: "Personal y usuarios",
+      icono: "https://img.icons8.com/color/50/000000/registration-skin-type-7.png", },
+  ];
 
- cargarMenu(){
-   this.programas = JSON.parse( localStorage.getItem('menu'));
- }
+//  cargarMenu(){
+//    this.programas = JSON.parse( localStorage.getItem('menu'));
+//  }
+}
+
+export interface Unida {
+  name:string,
+  icono:string;
 }

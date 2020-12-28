@@ -1,4 +1,6 @@
-<div class="tab-pane active" id="home" role="tabpanel">
+<app-loading *ngIf="cargando"></app-loading>
+
+<div *ngIf="!cargando" class="tab-pane active" id="home" role="tabpanel">
   <div class="card-body">
     <div class="row">
       <div class="col-md-12">
@@ -11,22 +13,27 @@
 
                 <div class="table">
                   <table class="table color-table info-table">
-                    <thead>
-                      <tr>
-                        <th>Nombre del Rol</th>
-                        <th>Descripción</th>
-                        <th>Permisos</th>
-                      </tr>
-                    </thead>
+
                     <tbody>
                       <tr>
-                        <td>Funcionario 1</td>
-                        <td>
-                          El funcionario SIDACE es el encargado de realizar el
-                          control correspondiente a la trayectoria de entrega de
-                          desayuno escolar
-                        </td>
-                        <td>Permiso 1, permiso 2, permiso 3, permiso 4,</td>
+                        <td>Dirección Administrativa:</td>
+                        <td>1</td>
+                        <td>{{unidad?.direccion}}</td>
+                      </tr>
+                      <tr>
+                        <td>Unidad Ejecutora:</td>
+                        <td>{{unidad?.numunidad}}</td>
+                        <td>{{unidad?.unidad}}</td>
+                      </tr>
+                      <tr>
+                        <td>Fondo:</td>
+                        <td>{{unidad?.numfondo}}</td>
+                        <td>{{unidad?.fondo}}</td>
+                      </tr>
+                      <tr>
+                        <td>Tipo de Operación:</td>
+                        <td>{{unidad?.numtipo}}</td>
+                        <td>{{unidad?.tipoope}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -68,19 +75,20 @@
                 </div> -->
           </div>
 
+
+
           <!-- column -->
           <!-- row -->
-          <div class="row">
+          <div *ngIf="!cargando" class="row">
             <div class="card-body">
-              <h4 class="card-title">Info Table</h4>
-              <div class="my-2 text-right">
+              <div class="my-2 text-left">
                 <button
                   *ngIf="usuario.role !== 'Usuario'"
                   class="btn btn-rounded btn-info"
                   type="button"
-                  (click)="abrirModal()"
+                  [routerLink]="['form']" routerLinkActive="router-link-active"
                 >
-                  Crear Proyecto
+                  Crear Operación
                 </button>
               </div>
               <div class="table-responsive">
@@ -97,6 +105,7 @@
                       <th>Inicio</th>
                       <th>Fin</th>
                       <th>Presupuesto</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -107,12 +116,30 @@
                       <td>{{ item.politica }}</td>
                       <td>{{ item.acp }}</td>
                       <td>{{ item.programa }}</td>
-                      <td>{{ item.proyecto }}</td>
+                      <td>{{ item.proyecto | slice:0:4 }}</td>
                       <td>{{ item.actividad }}</td>
                       <td>{{ item.operacion }}</td>
-                      <td>{{ item.inicio }}</td>
-                      <td>{{ item.fin }}</td>
-                      <td>{{ item.presupuesto }}</td>
+                      <td>{{ item.inicio | date: 'dd/MM/yy'}}</td>
+                      <td>{{ item.fin| date: 'dd/MM/yy' }}</td>
+                      <td>{{ item.presupuesto | currency }}</td>
+                      <td class="text-nowrap text-center">
+
+                        <a data-toggle="tooltip"
+                            data-original-title="Editar"
+                            style="margin-right: 20px;"
+                            class="cursor pointer"
+                            [routerLink]="['form', item.proyId]" routerLinkActive="router-link-active"
+                            >
+                            <i class="fa fa-edit"></i>
+                        </a>
+
+                        <!-- <a data-toggle="tooltip"
+                            data-original-title="Borrar"
+                            class="cursor pointer"
+                            >
+                            <i class="fa fa-trash"></i>
+                        </a> -->
+                    </td>
                     </tr>
                   </tbody>
                 </table>

@@ -1,0 +1,240 @@
+<!-- Row -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header bg-warning">
+        <h4 class="m-b-0 text-white">Registro de la Unidad Ejecutora</h4>
+      </div>
+      <div class="card-body">
+        <form
+          autocomplete="off"
+          (ngSubmit)="crearUnidad(unidadForm)"
+          class="form-horizontal"
+          #unidadForm="ngForm"
+        >
+          <div class="form-body">
+            <h3 class="box-title">Información General</h3>
+            <hr class="m-t-0 m-b-40" />
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3">
+                    Nombre de Unid. Ejec.
+                  </label>
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Ingrese su nombre completo"
+                      [class.is-invalid]="unidad.invalid && unidad.touched"
+                      [(ngModel)]="unidadNueva.unidad"
+                      name="unidad"
+                      required
+                      #unidad="ngModel"
+                    />
+                    <small
+                      *ngIf="unidad.invalid && unidad.touched"
+                      class="form-text text-danger"
+                    >
+                      El nombre es requerida</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Dependiente de:</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Ingrese un correo valido"
+                      [class.is-invalid]="nombre.invalid && nombre.touched"
+                      required
+                      #nombre="ngModel"
+                      [(ngModel)]="unidadNueva.nombre"
+                      name="nombre"
+                    />
+                    <small
+                      *ngIf="nombre.invalid && nombre.touched"
+                      class="form-text text-danger"
+                      >El campo es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Dirección</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="unidadNueva.direccion"
+                      [class.is-invalid]="direccion.invalid && direccion.touched"
+                      required
+                      #direccion="ngModel"
+                      name="direccion"
+                    />
+                    <small
+                      *ngIf="direccion.invalid && direccion.touched"
+                      class="form-text text-danger"
+                      >La dirección es requerida</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Número de referencia</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="unidadNueva.numdireccion"
+                      [class.is-invalid]="celular.invalid && celular.touched"
+                      required
+                      #celular="ngModel"
+                      name="celular"
+                    />
+                    <small
+                      *ngIf="celular.invalid && celular.touched"
+                      class="form-text text-danger"
+                      >El número es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Jefe de unidad</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="unidadNueva.manager"
+                      [class.is-invalid]="manager.invalid && manager.touched"
+                      required
+                      #manager="ngModel"
+                      name="manager"
+                    />
+                    <small
+                      *ngIf="manager.invalid && manager.touched"
+                      class="form-text text-danger"
+                      >El jefe de Unidad es requerida</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Tipo de Operacion</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="unidadNueva.tipoope"
+                      [class.is-invalid]="tipoope.invalid && tipoope.touched"
+                      required
+                      #tipoope="ngModel"
+                      name="tipoope"
+                    />
+                    <small
+                      *ngIf="tipoope.invalid && tipoope.touched"
+                      class="form-text text-danger"
+                      >El tipo de operacion es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Nro de dependientes</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="unidadNueva.numfondo"
+                      [class.is-invalid]="numfondo.invalid && numfondo.touched"
+                      required
+                      #numfondo="ngModel"
+                      name="numfondo"
+                    />
+                    <small
+                      *ngIf="numfondo.invalid && numfondo.touched"
+                      class="form-text text-danger"
+                      >La dirección es requerida</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3"
+                    >Unidades a cargo</label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="unidadNueva.numunidad"
+                      [class.is-invalid]="numunidad.invalid && numunidad.touched"
+                      required
+                      #numunidad="ngModel"
+                      name="numunidad"
+                    />
+                    <small
+                      *ngIf="numunidad.invalid && numunidad.touched"
+                      class="form-text text-danger"
+                      >El número es requerido</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/row-->
+
+
+          </div>
+          <hr />
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <button
+                class="btn btn-info mr-5"
+                type="submit">
+                Crear unidad
+              </button>
+              <button routerLink="/dashboard" class="btn btn-danger">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Row -->

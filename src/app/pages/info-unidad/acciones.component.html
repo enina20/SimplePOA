@@ -1,4 +1,7 @@
-<div class="tab-pane" id="settings" role="tabpanel">
+
+<app-loading *ngIf="cargando"></app-loading>
+
+<div *ngIf="!cargando" class="tab-pane" id="settings" role="tabpanel">
   <div class="card-body">
     <div class="row">
       <div class="col-12">
@@ -16,7 +19,7 @@
               </button>
             </div>
 
-            <div class="row m-t-40">
+            <div *ngIf="acciones.length !== 0" class="row m-t-40">
               <!-- Column -->
               <div class="col-md-6 col-lg-4 col-xlg-4">
                 <div class="card">
@@ -45,7 +48,7 @@
                 </div>
               </div>
             </div>
-            <div class="table-responsive">
+            <div *ngIf="acciones.length !== 0" class="table-responsive">
               <table
                 id="demo-foo-addrow"
                 class="table m-t-30 table-hover no-wrap contact-list"
@@ -85,13 +88,13 @@
                         <i class="fa fa-trash"></i>
                       </a>
 
-                      <button>
+                      <button class="btn-danger">
                         <a
                           (click)="terminado()"
                           data-toggle="tooltip"
                           class="cursor pointer"
                         >
-                          <i class="fa fa-check-square"></i>
+                          <i class=" btn-danger fa fa-check-square"></i>
                         </a>
                       </button>
                     </td>

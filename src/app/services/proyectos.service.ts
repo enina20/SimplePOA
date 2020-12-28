@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, delay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Proyecto } from '../models/proyectos';
 import { User } from '../models/user.model';
@@ -19,7 +19,26 @@ export class ProyectosService {
 
   getProyectos() {
     return this.http.get<GetResponseProducts>(`${base_url}/proyectos`)
-                .pipe(map((response) => response.proyectos));
+                .pipe(map((response) => response.proyectos))
+                .pipe( delay(500))
+
+  }
+
+  getProyectoById(id: string) {
+    return this.http.get<any>(`${base_url}/proyectos/${id}`)
+      .pipe(map((response) => response.proyecto));
+  }
+
+  UpdateProyectoById(id: string, proyecto: Proyecto) {
+    return this.http.put<any>(`${base_url}/proyectos/${id}`, proyecto)
+      .pipe(map((response) => response.proyecto));
+  }
+
+
+  getProyectosPorUnidad(termino:string) {
+    return this.http.get<GetResponseProducts>(`${base_url}/buscar/ejecutora/${termino}`)
+                .pipe(map((response) => response.proyectos))
+
   }
 
   createProyecto(proyecto: Proyecto) {

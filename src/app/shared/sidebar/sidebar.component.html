@@ -19,9 +19,9 @@
             </span></a
           >
           <ul aria-expanded="false" class="collapse">
-            <li><a href="javascript:void()">Mi perfil </a></li>
-            <li><a href="javascript:void()">Mis proyectos</a></li>
-            <li><a href="javascript:void()">Mensajes</a></li>
+            <li><a routerLink="perfil">Mi perfil </a></li>
+            <li><a routerLink="perfil">Mis proyectos</a></li>
+            <li><a routerLink="perfil">Mensajes</a></li>
             <li><a routerLink="account-setting">Ajustes de cuenta</a></li>
             <li><a routerLink="/login">Salir</a></li>
           </ul>
@@ -32,7 +32,7 @@
             UNIDADES EJECUTORAS
           </h2>
         </li>
-        <li *ngFor="let item of menuItems">
+        <li *ngFor="let item of menuItems" >
           <a class="has-arrow waves-effect waves-dark" aria-expanded="false">
             <img
               class="centrado"
@@ -44,15 +44,26 @@
               <h4>
                 {{ item.name }}
               </h4>
-              <span class="label label-rouded label-themecolor pull-right">
-                {{ item.item }}
-              </span>
+              <!-- <span class="label label-rouded label-themecolor pull-right">
+                {{  }}
+              </span> -->
             </span>
           </a>
 
           <ul aria-expanded="false" class="collapse">
-            <li *ngFor="let sub of item.subprograma">
-              <a routerLink="{{ sub.ruta }}">{{ sub.name }}</a>
+            <li *ngIf="item.name === 'Personal y usuarios'">
+              <a [routerLink]="['listado']" routerLinkActive="router-link-active" >LISTADO DE USUARIOS</a>
+            </li>
+            <li *ngIf="item.name === 'POA General'">
+              <a [routerLink]="['poa-general']" routerLinkActive="router-link-active">VER POA GENERAL</a>
+            </li>
+            <li *ngFor="let sub of subprograma">
+              <a [routerLink]="['unidad/', sub.unidad ]" routerLinkActive="router-link-active"  *ngIf="sub.nombre === item.name">{{ sub.unidad }}</a>
+
+            </li>
+            <li *ngIf="item.name !== 'Personal y usuarios' && item.name !== 'POA General'"
+              [routerLink]="['unidad-ejecutora/formulario']" routerLinkActive="router-link-active" >
+              <a class="btn btn-info text-white">Crear unidad ejecutora</a>
             </li>
           </ul>
         </li>
