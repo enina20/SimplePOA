@@ -378,7 +378,7 @@
                 <button
                   class="btn btn-primary mr-5"
                   role="button"
-                  (click)="actualizarUsuario()"
+                  (click)="actualizarUsuario(usuario.uid)"
                   [disabled]="!usuarioForm.form.valid"
                 >
                   Actualizar Usuario

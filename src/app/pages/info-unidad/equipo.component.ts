@@ -11,13 +11,16 @@ import { ProyectosService } from 'src/app/services/proyectos.service';
 export class EquipoComponent implements OnInit {
 
   equipo:User[]=[];
+  cargando:boolean;
 
   constructor( private proyectoService: ProyectosService) { }
 
   ngOnInit(): void {
+    this.cargando = true;
     this.proyectoService.busquedaPorProyecto('direccion').subscribe(
       data => this.equipo = data.clients
     )
+    this.cargando = false;
   }
 
 }

@@ -30,9 +30,9 @@ export class Grafica1Component implements OnInit {
     this.cargando = true;
     this.userService.getUsers(this.desde)
       .subscribe(({ total, usuarios }) => {
-        this.totalUsuarios = total,
-          this.clientes = usuarios
-        this.clientesTemp = usuarios
+        this.totalUsuarios = total;
+        this.clientes = usuarios;
+        this.clientesTemp = usuarios;
         this.cargando = false;
       });
   }

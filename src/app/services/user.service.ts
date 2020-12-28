@@ -58,8 +58,6 @@ export class UserService {
 
   }
 
-
-
   createUser(formData: RegisterForm) {
     return this.http.post(`${base_url}/usuarios`, formData)
       .pipe(

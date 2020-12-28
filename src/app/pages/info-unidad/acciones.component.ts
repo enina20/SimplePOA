@@ -14,6 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AccionesComponent implements OnInit {
 
+
+  cargando:boolean;
   public usuario: User;
   acciones: any[] = [];
   public nuevoAccion: Accion = new Accion();
@@ -23,12 +25,12 @@ export class AccionesComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
+    this.cargando = true;
     this.accionesServices.getAcciones().subscribe(data => {
       this.acciones = data;
       this.usuario = this.userService.usuario;
-      console.log(this.usuario.role);
-
     })
+    this.cargando = false;
   }
 
   abrirModal() {

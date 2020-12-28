@@ -23,7 +23,10 @@ import { ModalAccionComponent } from './modal-accion/modal-accion.component';
 
 import { AccionesComponent } from './info-unidad/acciones.component';
 import { PoaGeneralComponent } from './poa-general/poa-general.component';
-
+import { FormUnidadComponent } from './form-unidad/form-unidad.component';
+import { ReportesComponent } from './info-unidad/reportes/reportes.component';
+import { FormOperacionComponent } from './form-operacion/form-operacion.component';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 
 
@@ -44,7 +47,11 @@ import { PoaGeneralComponent } from './poa-general/poa-general.component';
     MensajesComponent,
     ModalAccionComponent,
     AccionesComponent,
-    PoaGeneralComponent
+    PoaGeneralComponent,
+    FormUnidadComponent,
+    ReportesComponent,
+    FormOperacionComponent,
+    DomseguroPipe
   ],
   exports: [
     DashboardComponent,

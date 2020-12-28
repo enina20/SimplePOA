@@ -8,14 +8,15 @@ import { UnidadService } from 'src/app/services/unidad.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-proyectos',
-  templateUrl: './proyectos.component.html',
+  selector: 'app-reportes',
+  templateUrl: './reportes.component.html',
   styles: [
   ]
 })
-export class ProyectosComponent implements OnInit {
+export class ReportesComponent implements OnInit {
 
   cargando:boolean;
+  linkPBI:string;
   proyectos:any[]=[];
   usuario: User;
   unidad: Unidades;
@@ -29,25 +30,19 @@ export class ProyectosComponent implements OnInit {
       this.usuario = userService.usuario
     }
 
-  ngOnInit(): void {
-    this.cargando = true;
-    this.activatedRoute.parent.params.subscribe(
-      ({ termino }) => {
-        this.termino = termino;
+    ngOnInit(): void {
+      this.cargando = true;
+      this.activatedRoute.parent.params.subscribe(
+        ({ termino }) => {
+          this.termino = termino;
 
-        this.unidadService.busquedaPorUnidad(this.termino).subscribe(
-          ({unidades}) => this.unidad = unidades
-        )
+          this.unidadService.busquedaPorUnidad(this.termino).subscribe(
+            ({unidades}) => this.linkPBI = unidades.link
+          )
 
-        this.proyectosServices.getProyectosPorUnidad( this.termino ).subscribe(
-          data => this.proyectos = data
-        )
-      }
-    )
-    this.cargando = false;
-  }
+        }
+      )
+      this.cargando = false;
+    }
 
-  abrirModal( id: string ){
-    this.modalInfoService.abrirModal()
-  }
 }
