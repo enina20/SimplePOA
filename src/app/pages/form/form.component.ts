@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Unidades } from 'src/app/models/unidades';
 import { User } from 'src/app/models/user.model';
+import { UnidadService } from 'src/app/services/unidad.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -14,13 +16,17 @@ export class FormComponent implements OnInit {
 
 
   public usuario: User = new User();
+  public subprograma:Unidades[]= [];
 
   constructor(private userService: UserService, private router: Router,
+    private unidadService: UnidadService,
     private activatedRoute: ActivatedRoute) {
     this.cargarUsuario();
   }
 
   ngOnInit(): void {
+    this.unidadService.getUnidades().subscribe( ({unidades}) => {
+      this.subprograma = unidades});
   }
 
   public cargarUsuario(): void {

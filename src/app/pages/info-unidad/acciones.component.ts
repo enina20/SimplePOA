@@ -42,6 +42,8 @@ export class AccionesComponent implements OnInit {
         this.accionesServices.getAccionesPorUnidad( this.termino ).subscribe(
           data => {
             this.acciones = data
+            console.log(this.acciones);
+
             this.noConcluidas = this.acciones.filter( acc => acc.estado === 'No concluidas');
             this.concluidas = this.acciones.filter( acc => acc.estado === 'Concluidas');
             this.enProceso = this.acciones.filter( acc => acc.estado === 'En Proceso');

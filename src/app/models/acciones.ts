@@ -4,6 +4,7 @@ export class Accion {
   public detalle: string;
   public estado: string;
   public responsible: string;
+  public unidad: string;
   public inicio: string;
   public fin: string;
 

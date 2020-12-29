@@ -11,17 +11,21 @@
                         <thead>
                             <tr>
                                 <th colspan="2">Perfil</th>
-                                <th>Operación</th>
+                                <!-- <th>Operación</th> -->
                                 <th>Cargo</th>
+                                <th>Rol del Usuario</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of equipo">
                                 <td ><span class="round round-primary"><img src="../assets/images/users/4.jpg" alt="user" width="50"></span></td>
                                 <td>
-                                    <h6>{{item.name}}</h6><small class="text-muted">{{item.email}}</small></td>
-                                <td>{{item.proyecto}}</td>
+                                    <h6>{{item.name}}</h6>
+                                    <small class="text-muted">{{item.email}}</small>
+                                </td>
+                                <!-- <td>{{item.proyecto}}</td> -->
                                 <td>{{item.puesto}}</td>
+                                <td>{{item.role}}</td>
                             </tr>
                         </tbody>
                     </table>

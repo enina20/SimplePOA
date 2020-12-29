@@ -79,20 +79,16 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group row">
-                    <label class="control-label text-right col-md-3">Operación</label>
+                    <label class="control-label text-right col-md-3">Unidad</label>
                     <div class="col-md-9">
-                        <select class="form-control custom-select"
-                            [(ngModel)]="nuevoAccion.estado"
-                            name="estado"
+                        <input class="form-control custom-select"
+                            [(ngModel)]="nuevoAccion.unidad"
+                            name="unidad"
                             required
-                            [class.is-invalid]="estado.invalid && estado.touched"
-                            #estado="ngModel"
+                            [class.is-invalid]="unidad.invalid && unidad.touched"
+                            #unidad="ngModel"
+                            placeholder="Ejemplo ADMINISTRACION DEL CONCEJO MUNICIPAL"
                             >
-
-                            <option value="No concluidas">No concluidas</option>
-                            <option value="En proceso">En proceso</option>
-                            <option value="Completadas">Completadas</option>
-                        </select>
                         <small *ngIf="estado.invalid && estado.touched"
                           class="form-text text-danger"> El estado es requerido</small>
                         <small class="form-control-feedback"> Selecciona el estado de la accion </small> </div>

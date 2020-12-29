@@ -26,7 +26,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.accionesServices.getAcciones.
+    this.accionesServices.getAcciones().subscribe(
+      data => this.acciones = data.acciones
+    );
   }
 
   logOut() {

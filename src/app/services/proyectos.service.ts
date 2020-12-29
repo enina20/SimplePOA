@@ -35,8 +35,8 @@ export class ProyectosService {
   }
 
 
-  getProyectosPorUnidad(desde: number = 0, termino:string) {
-    return this.http.get<GetResponseProducts>(`${base_url}/buscar/ejecutora/${termino}?desde=${desde}`)
+  getProyectosPorUnidad(termino:string) {
+    return this.http.get<GetResponseProducts>(`${base_url}/buscar/ejecutora/${termino}`)
                 .pipe(map((response) => response.proyectos))
 
   }

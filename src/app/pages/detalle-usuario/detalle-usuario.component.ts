@@ -15,6 +15,7 @@ export class DetalleUsuarioComponent implements OnInit {
   public imagen = '';
   public imagenSubir: File;
   public imgTemp: any = '';
+  public cargar: Boolean;
 
   constructor(private userService: UserService,
     private activatedRoute: ActivatedRoute,
@@ -24,6 +25,8 @@ export class DetalleUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargar = true,
+    this.cargar = false
   }
 
   cambiarImagen(file: File) {

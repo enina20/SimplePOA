@@ -42,7 +42,7 @@ export class ProyectosComponent implements OnInit {
           ({unidades}) => this.unidad = unidades
         )
 
-        this.proyectosServices.getProyectosPorUnidad( this.desde, this.termino ).subscribe(
+        this.proyectosServices.getProyectosPorUnidad( this.termino ).subscribe(
           data => {
             this.proyectos = data,
             this.proyectosTemp = data
@@ -67,7 +67,7 @@ export class ProyectosComponent implements OnInit {
     } else if (this.desde >= this.totalUsuarios) {
       this.desde -= valor;
     }
-    this.proyectosServices.getProyectosPorUnidad( this.desde, this.termino ).subscribe(
+    this.proyectosServices.getProyectosPorUnidad( this.termino ).subscribe(
       data => this.proyectos = data
     )
   }

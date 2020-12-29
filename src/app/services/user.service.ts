@@ -81,6 +81,12 @@ export class UserService {
       .pipe(delay(500))
   }
 
+  getUsuariosPorProyecto(termino:string) {
+    return this.http.get<GetResponseProducts>(`${base_url}/buscar/filtrar/proyecto/${termino}`)
+                .pipe(map((response) => response.clients))
+
+  }
+
   getUserById(id: string) {
     return this.http.get<any>(`${base_url}/usuarios/${id}`)
       .pipe(map((response) => response.usuario));
