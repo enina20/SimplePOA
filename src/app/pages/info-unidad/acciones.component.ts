@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Accion } from 'src/app/models/acciones';
 import { User } from 'src/app/models/user.model';
 import { AccionesService } from 'src/app/services/acciones.service';
@@ -15,21 +16,39 @@ import { UserService } from 'src/app/services/user.service';
 export class AccionesComponent implements OnInit {
 
 
-  cargando:boolean;
+
+  public cargando:boolean;
   public usuario: User;
-  acciones: any[] = [];
+  public acciones: any[] = [];
+  public termino: string;
   public nuevoAccion: Accion = new Accion();
+
+  public noConcluidas: any[] = [];
+  public concluidas: any[] = [];
+  public enProceso: any[] = [];
 
   constructor(private modalInfoService: ModalInfoService,
     private accionesServices: AccionesService,
+    private activatedRoute:ActivatedRoute,
     private userService: UserService) { }
 
   ngOnInit(): void {
     this.cargando = true;
-    this.accionesServices.getAcciones().subscribe(data => {
-      this.acciones = data;
-      this.usuario = this.userService.usuario;
-    })
+    this.activatedRoute.parent.params.subscribe(
+      ({ termino }) => {
+        this.termino = termino;
+        console.log('termino', this.termino);
+
+        this.accionesServices.getAccionesPorUnidad( this.termino ).subscribe(
+          data => {
+            this.acciones = data
+            this.noConcluidas = this.acciones.filter( acc => acc.estado === 'No concluidas');
+            this.concluidas = this.acciones.filter( acc => acc.estado === 'Concluidas');
+            this.enProceso = this.acciones.filter( acc => acc.estado === 'En Proceso');
+          }
+        )
+      }
+    )
     this.cargando = false;
   }
 
@@ -37,10 +56,22 @@ export class AccionesComponent implements OnInit {
     this.modalInfoService.abrirModal2()
   }
 
-  terminado() {
-    console.log('terminado');
+
+
+
+  cambiarEstado(dato: string, estado: string) {
+    console.log(dato);
+
+    let acc: Accion = new Accion;
+    acc.estado = estado;
+    this.accionesServices.UpdateAccion(dato, acc).subscribe(
+      data => console.log(data)
+
+    );
 
   }
+
+
 
 }
 

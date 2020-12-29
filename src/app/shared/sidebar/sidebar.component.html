@@ -63,7 +63,7 @@
             </li>
             <li *ngIf="item.name !== 'Personal y usuarios' && item.name !== 'POA General'"
               [routerLink]="['unidad-ejecutora/formulario']" routerLinkActive="router-link-active" >
-              <a class="btn btn-info text-white">Crear unidad ejecutora</a>
+              <a class="btn btn-info text-white">{{item.boton}}</a>
             </li>
           </ul>
         </li>

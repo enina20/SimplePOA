@@ -98,7 +98,6 @@ export class Grafica1Component implements OnInit {
       this.desde -= valor;
     }
     this.getUsuarios();
-
   }
 
 }

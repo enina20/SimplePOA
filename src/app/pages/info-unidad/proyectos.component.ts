@@ -17,9 +17,12 @@ export class ProyectosComponent implements OnInit {
 
   cargando:boolean;
   proyectos:any[]=[];
+  proyectosTemp:any[]=[];
   usuario: User;
   unidad: Unidades;
   termino: string;
+  totalUsuarios: Number = 0;
+  desde: number = 0;
 
   constructor( private proyectosServices:ProyectosService ,
     private modalInfoService: ModalInfoService,
@@ -39,15 +42,33 @@ export class ProyectosComponent implements OnInit {
           ({unidades}) => this.unidad = unidades
         )
 
-        this.proyectosServices.getProyectosPorUnidad( this.termino ).subscribe(
-          data => this.proyectos = data
+        this.proyectosServices.getProyectosPorUnidad( this.desde, this.termino ).subscribe(
+          data => {
+            this.proyectos = data,
+            this.proyectosTemp = data
+          }
         )
       }
     )
     this.cargando = false;
   }
 
+  getUsuarios(){
+  }
+
   abrirModal( id: string ){
     this.modalInfoService.abrirModal()
+  }
+
+  cambiarPagina(valor: number) {
+    this.desde += valor;
+    if (this.desde < 0) {
+      this.desde = 0
+    } else if (this.desde >= this.totalUsuarios) {
+      this.desde -= valor;
+    }
+    this.proyectosServices.getProyectosPorUnidad( this.desde, this.termino ).subscribe(
+      data => this.proyectos = data
+    )
   }
 }

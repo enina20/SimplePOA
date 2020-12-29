@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Accion } from 'src/app/models/acciones';
 import { User } from 'src/app/models/user.model';
+import { AccionesService } from 'src/app/services/acciones.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,14 +15,18 @@ export class HeaderComponent implements OnInit {
 
   public imagen = '';
   public usuario;
+  public acciones: Accion[] = [];
 
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private accionesServices: AccionesService,
+    private userService: UserService, private router: Router) {
     this.usuario = userService.usuario;
     this.imagen = userService.usuario.CargarImagen;
   }
 
   ngOnInit(): void {
+    // this.accionesServices.getAcciones.
   }
 
   logOut() {

@@ -24,7 +24,7 @@
                             class="form-control"
                             placeholder="Ejem. Jose Luis Perales"
                             [class.is-invalid]="responsable.invalid && responsable.touched"
-                            [(ngModel)]="nuevoAccion.responsable"
+                            [(ngModel)]="nuevoAccion.responsible"
                             name="responsable"
                             required
                             #responsable="ngModel">
@@ -77,6 +77,27 @@
                           <small class="form-control-feedback"> Selecciona el estado de la accion </small> </div>
                   </div>
               </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="control-label text-right col-md-3">Operación</label>
+                    <div class="col-md-9">
+                        <select class="form-control custom-select"
+                            [(ngModel)]="nuevoAccion.estado"
+                            name="estado"
+                            required
+                            [class.is-invalid]="estado.invalid && estado.touched"
+                            #estado="ngModel"
+                            >
+
+                            <option value="No concluidas">No concluidas</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Completadas">Completadas</option>
+                        </select>
+                        <small *ngIf="estado.invalid && estado.touched"
+                          class="form-text text-danger"> El estado es requerido</small>
+                        <small class="form-control-feedback"> Selecciona el estado de la accion </small> </div>
+                </div>
+            </div>
               <!--/span-->
               <div class="col-md-6">
                 <div class="form-group row">
@@ -85,7 +106,7 @@
                       <input type="date"
                              class="form-control"
                              [class.is-invalid]="fecha.invalid && fecha.touched"
-                            [(ngModel)]="nuevoAccion.fecha"
+                            [(ngModel)]="nuevoAccion.inicio"
                             required
                             #fecha="ngModel"
                             name="fecha">
@@ -94,6 +115,22 @@
                   </div>
                 </div>
             </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                  <label class="control-label text-right col-md-3">Fecha límite</label>
+                  <div class="col-md-9">
+                    <input type="date"
+                           class="form-control"
+                           [class.is-invalid]="fecha.invalid && fecha.touched"
+                          [(ngModel)]="nuevoAccion.fin"
+                          required
+                          #fecha="ngModel"
+                          name="fecha">
+                          <small *ngIf="fecha.invalid && fecha.touched"
+                          class="form-text text-danger"> La fecha es requerida</small>
+                </div>
+              </div>
+          </div>
           </div>
       </div>
       <hr>
@@ -104,8 +141,8 @@
                       <div class="col-md-offset-3 col-md-9">
                           <button type="submit"
                                   class="btn btn-info mr-3">Crear</button>
-                          <button
-                          type="submit" class="btn btn-danger mr-3">Cancelar</button>
+                          <button (click)="cerrarModal()"
+                          class="btn btn-danger mr-3">Cancelar</button>
                       </div>
                   </div>
               </div>

@@ -16,14 +16,19 @@ export class SidebarService {
 
   public programas:Unida[]=[
     { name: 'Administrativos Centrales',
-      icono: "https://img.icons8.com/color/48/000000/meeting-room.png", },
+      boton: 'Crear Administración',
+      icono: "https://img.icons8.com/color/48/000000/meeting-room.png" },
     { name: "Direcciones",
-      icono: "https://img.icons8.com/color/48/000000/sales-channels.png", },
+      boton: 'Crear Dirección',
+      icono: "https://img.icons8.com/color/48/000000/reseller.png", },
     { name: "Secretarias",
+      boton: 'Crear Secretaria',
       icono: "https://img.icons8.com/color/48/000000/teamwork--v2.png", },
     { name: "POA General",
+      boton: 'Crear Administracion',
       icono: "https://img.icons8.com/color/48/000000/rules.png", },
     { name: "Personal y usuarios",
+      boton: 'Crear Administracion',
       icono: "https://img.icons8.com/color/50/000000/registration-skin-type-7.png", },
   ];
 
@@ -35,4 +40,5 @@ export class SidebarService {
 export interface Unida {
   name:string,
   icono:string;
+  boton:string;
 }

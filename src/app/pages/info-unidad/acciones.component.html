@@ -24,7 +24,7 @@
               <div class="col-md-6 col-lg-4 col-xlg-4">
                 <div class="card">
                   <div class="box bg-danger text-center">
-                    <h1 class="font-light text-white">15</h1>
+                    <h1 class="font-light text-white">{{this.noConcluidas.length}}</h1>
                     <h6 class="text-white">Acciones No concluidas</h6>
                   </div>
                 </div>
@@ -33,7 +33,7 @@
               <div class="col-md-6 col-lg-4 col-xlg-4">
                 <div class="card">
                   <div class="box bg-warning text-center">
-                    <h1 class="font-light text-white">12</h1>
+                    <h1 class="font-light text-white">{{this.enProceso.length}}</h1>
                     <h6 class="text-white">Acciones en proceso</h6>
                   </div>
                 </div>
@@ -42,7 +42,7 @@
               <div class="col-md-6 col-lg-4 col-xlg-4">
                 <div class="card">
                   <div class="box bg-success text-center">
-                    <h1 class="font-light text-white">22</h1>
+                    <h1 class="font-light text-white">{{this.concluidas.length}}</h1>
                     <h6 class="text-white">Acciones Completadas</h6>
                   </div>
                 </div>
@@ -61,8 +61,9 @@
                     <th>Detalle de la acción</th>
                     <th>Estado</th>
                     <th>Responsable</th>
+                    <th>Fecha de inicio</th>
                     <th>Fecha límite</th>
-                    <th>Ajustes</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -71,32 +72,53 @@
 
                     <td>{{ item.detalle }}</td>
                     <td>
-                      <span class="label label-warning">
+                      <span *ngIf="item.estado === 'No concluidas'"
+                      class="label label-danger">
+                        {{ item.estado }}
+                      </span>
+                      <span *ngIf="item.estado === 'En Proceso'"
+                      class="label label-warning">
+                        {{ item.estado }}
+                      </span>
+                      <span *ngIf="item.estado === 'Concluidas'"
+                      class="label label-success">
                         {{ item.estado }}
                       </span>
                     </td>
-                    <td>{{ item.responsable }}</td>
-                    <td>{{ item.fecha }}</td>
+
+                    <td>{{ item.responsible }}</td>
+                    <td>{{ item.inicio | slice:0:10}}</td>
+                    <td>{{ item.fin | slice:0:10 }}</td>
 
                     <td class="text-nowrap text-center">
-                      <a
+                      <!-- <a
                         data-toggle="tooltip"
                         data-original-title="Borrar"
                         style="margin-right: 20px"
                         class="cursor pointer"
                       >
                         <i class="fa fa-trash"></i>
-                      </a>
+                      </a> -->
 
-                      <button class="btn-danger">
+                      <div>
                         <a
-                          (click)="terminado()"
+                          (click)="cambiarEstado( item._id, 'En Proceso' )"
                           data-toggle="tooltip"
+                          style="margin-right: 20px"
                           class="cursor pointer"
                         >
-                          <i class=" btn-danger fa fa-check-square"></i>
+                          <i class=" btn-warning fa fa-check-square"></i>
                         </a>
-                      </button>
+
+                        <a
+                        (click)="cambiarEstado( item._id, 'Concluidas' )"
+                        data-toggle="tooltip"
+                        class="cursor pointer"
+                      >
+                        <i class=" btn-success fa fa-check-square"></i>
+                      </a>
+
+                    </div>
                     </td>
                   </tr>
                 </tbody>

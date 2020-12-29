@@ -18,6 +18,5 @@ export class AccountSettingComponent implements OnInit {
 
   changeTheme(theme:string){
     this.settingService.changeTheme( theme );
-
   }
 }
