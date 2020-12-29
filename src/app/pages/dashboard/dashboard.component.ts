@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
       }
     );
 
-    this.cargarPresupuesto();
+
 
     this.unidadService.getUnidades().subscribe(({total}) => {
         this.unidades = total
@@ -57,10 +57,4 @@ export class DashboardComponent implements OnInit {
     this.cargando = false;
   }
 
-  cargarPresupuesto(){
-    for (let index = 0; index < this.proyectos.length; index++) {
-      this.presupuesto = this.presupuesto + Number(this.proyectos[index].presupuesto)
-      console.log(this.presupuesto);
-    }
-  }
 }
